@@ -125,7 +125,7 @@ class ActiveUSManager(models.Manager):
         return super(USManager, self).get_query_set().filter(active=True)
 
 class UserSubscription(models.Model):
-    user = models.ForeignKey(auth.models.User)
+    user = models.OneToOneField(auth.models.User)
     subscription = models.ForeignKey(Subscription)
     expires = models.DateField(null = True, default=datetime.date.today)
     active = models.BooleanField(default=True)
